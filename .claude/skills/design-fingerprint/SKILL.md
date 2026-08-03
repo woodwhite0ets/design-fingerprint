@@ -5,7 +5,7 @@ description: 提取任意网站的设计系统生成 DESIGN.md（模仿），或
 
 # DESIGN.md 设计系统工作流
 
-> 本 skill 同时发布为仓库 [design-fingerprint](https://github.com/<you>/design-fingerprint)。
+> 本 skill 同时发布为仓库 [design-fingerprint](https://github.com/woodwhite0ets/design-fingerprint)。
 > 仓库根 README 有人类可读的介绍；本文档是 Claude 执行时的工作流。
 
 这个 skill 把任何网站变成一份机器可读的 `DESIGN.md`（Stitch 概念，与 VoltAgent/awesome-design-md 同构），然后让编码 agent 能据此生成视觉一致的 UI。**两条路径：**

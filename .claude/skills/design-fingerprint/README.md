@@ -2,7 +2,7 @@
 
 把任意网站变成 `DESIGN.md` 设计系统（模仿），或基于 DESIGN.md 生成风格一致的新页面（创新）。
 
-本目录是 [design-fingerprint](https://github.com/<you>/design-fingerprint) 仓库的内容——仓库根 README 有完整项目介绍。
+本目录是 [design-fingerprint](https://github.com/woodwhite0ets/design-fingerprint) 仓库的内容——仓库根 README 有完整项目介绍。
 
 ## 设计哲学
 

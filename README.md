@@ -22,7 +22,7 @@
 
 ```bash
 # 1. 把 skill 放进项目的 .claude/skills/
-git clone https://github.com/<you>/design-fingerprint.git .claude/skills/design-fingerprint
+git clone https://github.com/woodwhite0ets/design-fingerprint.git .claude/skills/design-fingerprint
 # 2. 装依赖（只需一次）
 cd .claude/skills/design-fingerprint && npm install
 ```
