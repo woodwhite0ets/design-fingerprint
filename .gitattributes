@@ -1,0 +1,9 @@
+# Normalize line endings to LF for text files (Windows autocrlf was on at init)
+* text=auto
+*.js text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.png binary
