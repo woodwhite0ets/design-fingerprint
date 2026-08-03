@@ -75,6 +75,8 @@ node scripts/verify.mjs output/example.com/spec.json
 
 ## 示例
 
+[在线预览](https://woodwhite0ets.github.io/design-fingerprint/) — 苹果设计指纹的视觉目录、暗色模式、生成的博客页面。
+
 `output/` 目录里有一个完整示例：从 [apple.com](https://www.apple.com) 提取设计指纹（白底、SF Pro、`#0071e3` 品牌蓝、pill 按钮、全平表面），并用它生成了一页原创博客（`blog-apple-style.html`）。
 
 ## 许可证
