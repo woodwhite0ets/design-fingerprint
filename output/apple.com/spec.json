@@ -1,0 +1,122 @@
+{
+  "sourceUrl": "https://www.apple.com",
+  "sourceDomain": "apple.com",
+  "capturedAt": "2026-08-03T01:21:08.758Z",
+  "generatedBy": "design-md-generator (dom-extraction + vision correction)",
+  "typography": {
+    "fontFamilies": {
+      "sans": "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "serif": "",
+      "mono": ""
+    },
+    "typeScale": [
+      { "name": "Display", "size": "3.5rem", "weight": 700, "lineHeight": 1.05, "letterSpacing": "-0.015em", "font": "sans" },
+      { "name": "H1", "size": "2.5rem", "weight": 700, "lineHeight": 1.1, "letterSpacing": "-0.01em", "font": "sans" },
+      { "name": "H2", "size": "2rem", "weight": 600, "lineHeight": 1.2, "letterSpacing": "-0.008em", "font": "sans" },
+      { "name": "H3", "size": "1.5rem", "weight": 600, "lineHeight": 1.3, "letterSpacing": "0", "font": "sans" },
+      { "name": "Body", "size": "1.0625rem", "weight": 400, "lineHeight": 1.6, "letterSpacing": "0", "font": "sans" },
+      { "name": "Small", "size": "0.875rem", "weight": 400, "lineHeight": 1.5, "letterSpacing": "0", "font": "sans" },
+      { "name": "Caption", "size": "0.75rem", "weight": 600, "lineHeight": 1.4, "letterSpacing": "0.05em", "font": "sans" }
+    ]
+  },
+  "colors": [
+    { "role": "background", "hex": "#ffffff", "description": "Page background" },
+    { "role": "background-elevated", "hex": "#f5f5f7", "description": "Cards and elevated surfaces (light gray)" },
+    { "role": "background-inverse", "hex": "#000000", "description": "Dark hero sections and footer" },
+    { "role": "text-primary", "hex": "#1d1d1f", "description": "Headings and primary text" },
+    { "role": "text-secondary", "hex": "#6e6e73", "description": "Supporting text" },
+    { "role": "text-on-dark", "hex": "#f5f5f7", "description": "Text on dark surfaces" },
+    { "role": "border", "hex": "#d2d2d7", "description": "Hairline dividers" },
+    { "role": "accent", "hex": "#0071e3", "description": "Brand blue — links and primary actions" },
+    { "role": "accent-hover", "hex": "#0077ed", "description": "Link hover state" },
+    { "role": "accent-soft", "hex": "#e8f0fe", "description": "Accent tint backgrounds" }
+  ],
+  "components": {
+    "button": {
+      "borderRadius": "980px",
+      "padding": "12px 24px",
+      "fontWeight": 600,
+      "variants": [
+        { "variant": "primary", "background": "accent", "text": "text-on-dark", "border": "none", "hover": "accent-hover" },
+        { "variant": "secondary", "background": "transparent", "text": "accent", "border": "accent", "hover": "accent-soft" },
+        { "variant": "ghost", "background": "transparent", "text": "accent", "border": "none", "hover": "accent-soft" }
+      ]
+    },
+    "card": {
+      "background": "background-elevated",
+      "border": "none",
+      "borderRadius": "18px",
+      "shadow": "none"
+    },
+    "input": {
+      "background": "background-elevated",
+      "border": "border",
+      "borderRadius": "12px",
+      "focusBorder": "accent",
+      "padding": "12px 16px"
+    },
+    "navItem": {
+      "inactive": "text-primary",
+      "active": "text-primary",
+      "activeBackground": "accent-soft",
+      "borderRadius": "980px"
+    }
+  },
+  "layout": {
+    "spacingScale": [8, 16, 24, 32, 48, 64, 96, 128],
+    "gridColumns": 12,
+    "containerMaxWidth": "1200px",
+    "contentPadding": "1.5rem",
+    "sectionGap": "6rem",
+    "density": "relaxed"
+  },
+  "depth": [
+    { "name": "rest", "shadow": "none", "description": "Flat surfaces — Apple design is flat, no shadows" },
+    { "name": "raised", "shadow": "0 4px 24px rgba(0,0,0,0.08)", "description": "Floating elements and dropdowns" }
+  ],
+  "theme": {
+    "atmosphere": "Minimalist, premium, product-centric. Huge white space, generous section gaps, enormous hero typography in semibold SF Pro, pill-shaped blue buttons, flat surfaces with zero shadows. Content is centered and breathing; the design does the talking, not decoration.",
+    "density": "relaxed",
+    "darkMode": {
+      "background": "#000000",
+      "surface": "#1d1d1f",
+      "text": "#f5f5f7",
+      "textSecondary": "#86868b",
+      "border": "#424245"
+    }
+  },
+  "responsive": {
+    "breakpoints": [
+      { "name": "mobile", "width": 0, "layout": "Single column, stacked cards, hero scales down" },
+      { "name": "tablet", "width": 768, "layout": "Two-column card grids" },
+      { "name": "desktop", "width": 1024, "layout": "Multi-column grids, full hero" }
+    ],
+    "touchTargets": "Minimum 44px tap targets — Apple's standard is 44px.",
+    "collapseStrategy": "Global nav collapses into hamburger below 768px; card grids collapse to single column."
+  },
+  "rules": {
+    "do": [
+      "Use SF Pro (system sans) for everything — never serif",
+      "Use the accent blue #0071e3 ONLY for links and primary buttons, never as surface color",
+      "Keep massive whitespace: sections are separated by at least 96px",
+      "Headlines are huge (Display 56px+) and semibold — they carry the design",
+      "Buttons are pill-shaped (border-radius 980px) with generous padding",
+      "Keep surfaces flat — no shadows, no borders on cards, just background color changes (#f5f5f7 on #ffffff)"
+    ],
+    "dont": [
+      "Don't use shadows or elevation — Apple is flat",
+      "Don't use serif fonts anywhere",
+      "Don't color the background with accent blue — white and #f5f5f7 only",
+      "Don't use uppercase headline styles — Apple headlines are title case",
+      "Don't squeeze content — spacing is part of the design language",
+      "Don't use pure #000 for text on light backgrounds — use #1d1d1f"
+    ]
+  },
+  "promptGuide": {
+    "quickReference": "bg #ffffff · text #1d1d1f / #6e6e73 · accent #0071e3 · SF Pro sans · pill buttons · flat surfaces",
+    "starterPrompts": [
+      "Build a blog: white background, huge semibold headline, article cards on #f5f5f7 with 18px radius, blue text links.",
+      "Build a product landing section: giant headline, secondary gray text, pill-shaped blue CTA button, centered."
+    ]
+  }
+}

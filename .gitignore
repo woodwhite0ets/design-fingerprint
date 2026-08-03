@@ -1,0 +1,9 @@
+# node_modules and lockfiles inside the skill
+.claude/skills/design-fingerprint/node_modules/
+.claude/skills/design-fingerprint/package-lock.json
+
+# generated screenshots (page.png / mobile.png / dark.png are big)
+output/**/.screenshots/
+
+# verification artifacts (reference.html, ref/live screenshots, report.json)
+output/**/verify-runs/
