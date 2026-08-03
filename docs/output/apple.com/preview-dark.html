@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>apple.com — DESIGN.md preview (dark)</title>
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #1d1d1f;
+    --text: #f5f5f7;
+    --text-2: #86868b;
+    --border: #424245;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; padding: 40px 24px 80px; }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 40px; }
+  header h1 { font-size: 1.5rem; font-weight: 700; }
+  header a { color: var(--text-2); font-size: 0.9rem; }
+  section { margin-top: 48px; }
+  h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); margin-bottom: 16px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .swatch { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); }
+  .swatch .chip { height: 64px; }
+  .swatch .meta { padding: 10px 12px; }
+  .swatch .role { font-weight: 600; font-size: 0.85rem; }
+  .swatch .value { font-size: 0.8rem; color: var(--text-2); }
+  .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .type-row { display: flex; gap: 24px; align-items: baseline; border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .type-row .spec { min-width: 180px; color: var(--text-2); font-size: 0.85rem; }
+  .nav-demo { display: flex; gap: 4px; margin-top: 8px; }
+  .nav-demo a { padding: 6px 12px; border-radius: 6px; text-decoration: none; }
+  .depth-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .card-demo { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .card-demo h3 { margin-bottom: 6px; }
+  .card-demo p { color: var(--text-2); font-size: 0.9rem; line-height: 1.5; }
+  .card-demo .row { display: flex; gap: 8px; margin-top: 16px; }
+  .footer { margin-top: 64px; color: var(--text-2); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>apple.com</h1>
+    <a>dark preview · source: https://www.apple.com</a>
+  </header>
+
+  <section>
+    <h2>Colors</h2>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#000000"></div><div class="meta"><div class="role">background</div><div class="value">#000000 <span style="opacity:.6">(light: #ffffff)</span></div></div></div>
+      <div class="swatch"><div class="chip" style="background:#1d1d1f"></div><div class="meta"><div class="role">background-elevated</div><div class="value">#1d1d1f <span style="opacity:.6">(light: #f5f5f7)</span></div></div></div>
+      <div class="swatch"><div class="chip" style="background:#000000"></div><div class="meta"><div class="role">background-inverse</div><div class="value">#000000</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#f5f5f7"></div><div class="meta"><div class="role">text-primary</div><div class="value">#f5f5f7 <span style="opacity:.6">(light: #1d1d1f)</span></div></div></div>
+      <div class="swatch"><div class="chip" style="background:#86868b"></div><div class="meta"><div class="role">text-secondary</div><div class="value">#86868b <span style="opacity:.6">(light: #6e6e73)</span></div></div></div>
+      <div class="swatch"><div class="chip" style="background:#f5f5f7"></div><div class="meta"><div class="role">text-on-dark</div><div class="value">#f5f5f7</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#424245"></div><div class="meta"><div class="role">border</div><div class="value">#424245 <span style="opacity:.6">(light: #d2d2d7)</span></div></div></div>
+      <div class="swatch"><div class="chip" style="background:#0071e3"></div><div class="meta"><div class="role">accent</div><div class="value">#0071e3</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#0077ed"></div><div class="meta"><div class="role">accent-hover</div><div class="value">#0077ed</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#e8f0fe"></div><div class="meta"><div class="role">accent-soft</div><div class="value">#e8f0fe</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <div class="type-row"><div class="spec">Display · 3.5rem · 700</div><div style="font-size:3.5rem;font-weight:700;line-height:1.05;letter-spacing:-0.015em;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+    <div class="type-row"><div class="spec">H1 · 2.5rem · 700</div><div style="font-size:2.5rem;font-weight:700;line-height:1.1;letter-spacing:-0.01em;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+    <div class="type-row"><div class="spec">H2 · 2rem · 600</div><div style="font-size:2rem;font-weight:600;line-height:1.2;letter-spacing:-0.008em;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+    <div class="type-row"><div class="spec">H3 · 1.5rem · 600</div><div style="font-size:1.5rem;font-weight:600;line-height:1.3;letter-spacing:0;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+    <div class="type-row"><div class="spec">Body · 1.0625rem · 400</div><div style="font-size:1.0625rem;font-weight:400;line-height:1.6;letter-spacing:0;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+    <div class="type-row"><div class="spec">Small · 0.875rem · 400</div><div style="font-size:0.875rem;font-weight:400;line-height:1.5;letter-spacing:0;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+    <div class="type-row"><div class="spec">Caption · 0.75rem · 600</div><div style="font-size:0.75rem;font-weight:600;line-height:1.4;letter-spacing:0.05em;font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">The quick brown fox jumps over the lazy dog</div></div>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <div class="buttons">
+        <button style="background:#0071e3;color:#f5f5f7;border:none;border-radius:980px;padding:12px 24px;font-weight:600;cursor:pointer" onmouseover="this.style.background='#0077ed'" onmouseout="this.style.background='#0071e3'">primary</button>
+        <button style="background:transparent;color:#0071e3;border:1px solid #0071e3;border-radius:980px;padding:12px 24px;font-weight:600;cursor:pointer" onmouseover="this.style.background='#e8f0fe'" onmouseout="this.style.background='transparent'">secondary</button>
+        <button style="background:transparent;color:#0071e3;border:none;border-radius:980px;padding:12px 24px;font-weight:600;cursor:pointer" onmouseover="this.style.background='#e8f0fe'" onmouseout="this.style.background='transparent'">ghost</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Navigation</h2>
+    <div class="nav-demo">
+        <a style="background:#e8f0fe;color:#f5f5f7;border-radius:980px;padding:6px 12px;text-decoration:none;font-weight:600">Home</a>
+        <a style="background:transparent;color:#f5f5f7;border-radius:980px;padding:6px 12px;text-decoration:none;font-weight:400">Products</a>
+        <a style="background:transparent;color:#f5f5f7;border-radius:980px;padding:6px 12px;text-decoration:none;font-weight:400">Pricing</a>
+        <a style="background:transparent;color:#f5f5f7;border-radius:980px;padding:6px 12px;text-decoration:none;font-weight:400">Docs</a>
+        <a style="background:transparent;color:#f5f5f7;border-radius:980px;padding:6px 12px;text-decoration:none;font-weight:400">About</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cards</h2>
+    <div class="card-demo">
+      <h3>Sample card</h3>
+      <p>Minimalist, premium, product-centric. Huge white space, generous section gaps, enormous hero typography in semibold SF Pro, pill-shaped blue buttons, flat surfaces with zero shadows. Content is centered and breathing; the design does the talking, not decoration.</p>
+      <div class="row">
+        <button style="background:#0071e3;color:#f5f5f7;border:none;border-radius:980px;padding:12px 24px;font-weight:600;cursor:pointer">Primary action</button>
+        <button style="background:transparent;color:#f5f5f7;border:1px solid #424245;border-radius:980px;padding:12px 24px;font-weight:600;cursor:pointer">Secondary</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Depth & Elevation</h2>
+    <div class="depth-grid">
+        <div class="depth-card" style="box-shadow:none;background:#1d1d1f;border:1px solid #424245;border-radius:18px;padding:20px"><strong>rest</strong><br><span style="color:#86868b">Flat surfaces — Apple design is flat, no shadows</span></div>
+
+        <div class="depth-card" style="box-shadow:0 4px 24px rgba(0,0,0,0.08);background:#1d1d1f;border:1px solid #424245;border-radius:18px;padding:20px"><strong>raised</strong><br><span style="color:#86868b">Floating elements and dropdowns</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Responsive breakpoints</h2>
+    <div class="depth-grid"><div class="depth-card" style="background:#1d1d1f;border:1px solid #424245;border-radius:18px;padding:16px"><strong>mobile</strong> <span style="color:#86868b">≥0px</span><br><span style="color:#86868b;font-size:0.9em">Single column, stacked cards, hero scales down</span></div>
+          <div class="depth-card" style="background:#1d1d1f;border:1px solid #424245;border-radius:18px;padding:16px"><strong>tablet</strong> <span style="color:#86868b">≥768px</span><br><span style="color:#86868b;font-size:0.9em">Two-column card grids</span></div>
+          <div class="depth-card" style="background:#1d1d1f;border:1px solid #424245;border-radius:18px;padding:16px"><strong>desktop</strong> <span style="color:#86868b">≥1024px</span><br><span style="color:#86868b;font-size:0.9em">Multi-column grids, full hero</span></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Generated by <strong>design-md</strong> skill · design-md-generator (dom-extraction + vision correction) · captured 2026-08-03 · Do's: 6 · Don'ts: 6
+  </div>
+</div>
+</body>
+</html>
