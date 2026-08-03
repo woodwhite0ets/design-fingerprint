@@ -1,5 +1,7 @@
 # design-fingerprint
 
+> [English](README.en.md) · 中文
+
 一个 Claude Code skill：把任意网站变成一份机器可读的 `DESIGN.md` 设计指纹（模仿），或基于它生成风格一致但内容全新的页面（创新）。
 
 ```
