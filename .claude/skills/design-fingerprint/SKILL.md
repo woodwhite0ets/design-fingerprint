@@ -1,6 +1,6 @@
 ---
-name: design-md
-description: 提取任意网站的设计系统生成 DESIGN.md（模仿），或基于 DESIGN.md 生成风格一致的新页面（创新）。当用户说"模仿这个网站的风格/提取某网站的设计规范/照着这个设计做新页面"时使用。
+name: design-fingerprint
+description: 提取任意网站的设计系统生成 DESIGN.md（模仿），或基于 DESIGN.md 生成风格一致、交互完整的新页面（创新）。当用户说"模仿这个网站的风格/提取某网站的设计规范/照着这个设计做新页面"时使用。
 ---
 
 # DESIGN.md 设计系统工作流
@@ -21,7 +21,7 @@ description: 提取任意网站的设计系统生成 DESIGN.md（模仿），或
 ## 目录结构
 
 ```
-.claude/skills/design-md/
+.claude/skills/design-fingerprint/
 ├── SKILL.md            ← 本文件（工作流定义）
 ├── README.md           ← 设计哲学与背景
 ├── package.json        ← 依赖：playwright（node_modules/ 已安装）
@@ -38,7 +38,7 @@ description: 提取任意网站的设计系统生成 DESIGN.md（模仿），或
 ### Step 1 — 截图 + DOM 提取
 
 ```bash
-node .claude/skills/design-md/scripts/extract.mjs <url> [--out dir] [--dark]
+node .claude/skills/design-fingerprint/scripts/extract.mjs <url> [--out dir] [--dark]
 ```
 
 这一步输出：
@@ -62,7 +62,7 @@ node .claude/skills/design-md/scripts/extract.mjs <url> [--out dir] [--dark]
 ### Step 3 — 生成 DESIGN.md
 
 ```bash
-node .claude/skills/design-md/scripts/preview.mjs <spec.json路径> --md --out <输出目录>
+node .claude/skills/design-fingerprint/scripts/preview.mjs <spec.json路径> --md --out <输出目录>
 ```
 
 得到 `DESIGN.md`（9 区块）+ `preview.html`/`preview-dark.html`（人类可核验的视觉目录）。
@@ -70,7 +70,7 @@ node .claude/skills/design-md/scripts/preview.mjs <spec.json路径> --md --out <
 ### Step 4 — 验证（可选但推荐）
 
 ```bash
-node .claude/skills/design-md/scripts/verify.mjs <spec.json路径> [--url <URL>] [--out <目录>]
+node .claude/skills/design-fingerprint/scripts/verify.mjs <spec.json路径> [--url <URL>] [--out <目录>]
 ```
 
 用 spec 渲染参考组件页，截图后与线上站点对比**主导调色板**（coverage + 平均色距），
@@ -101,10 +101,43 @@ OVERALL ≥ 0.6 通过（≥ 0.85 GOOD），否则退出码 1。用途：
    - 间距只用 spacingScale
    - 按钮/卡片/输入框用组件规范
    - Do's 要做，Don'ts 绝不碰
-4. **HTML 内联实现**（单文件，或按用户技术栈），CSS 变量命名跟随角色：
+4. **实现**（单文件，或按用户技术栈），CSS 变量命名跟随角色：
    ```css
    :root { --bg: #0f1011; --surface: #1c1c1d; --text: #f7f8f8; --accent: #e4f222; }
    ```
+
+### 生成规范 A：跨技术栈适配
+
+设计 token（色值、间距、字阶）照抄 spec；但**组件实现必须适配目标技术栈**，不能把 CSS 假设直接搬过去：
+
+| 坑 | CSS（spec 里的值） | 桌面/其他栈的正确做法 |
+|----|-------------------|----------------------|
+| 超大圆角 | `border-radius: 980px` 会钳制为高度一半 → 胶囊 | WPF 的 CornerRadius **rx/ry 独立钳制**，980 会拉成椭圆。pill 形 = 圆角取**按钮高度的一半**（如 MinHeight 40 + 半径 20） |
+| 背景透明 | `rgba(255,255,255,0.92)` 配 `backdrop-filter: blur` | WPF 无 backdrop-filter：用近不透明的实色（如 `#EBFFFFFF`），失去毛玻璃是允许的近似 |
+| 字体 | SF Pro / system sans | 目标平台等价无衬线（Windows：Segoe UI + 微软雅黑），并向用户说明替换 |
+| 阴影/圆角 | `box-shadow` / `border-radius` | 不同栈的等价写法（WPF：DropShadowEffect；WinUI：ThemeShadow） |
+
+> 原则：**视觉意图 > 字面值**。"980px"是"胶囊形"的实现手段，不是形状本身；圆角/阴影/字体的**视觉结果**必须保持，具体数值要按目标栈的钳制规则换算。
+
+### 生成规范 B：交互逻辑（页面必须会"动"）
+
+只交付静态页面 = 只完成一半。生成页面时按此清单**实现交互**，全部配真实状态反馈：
+
+1. **页面切换**：多页/多视图的（导航、Tab、分页），必须真的能切。HTML 用 hash 路由（`#/`），桌面用页面容器或窗口
+2. **弹窗/模态**：触发弹窗的按钮（"详情""设置""确认"）必须真的弹。含遮罩、关闭路径（×/遮罩点击/取消）、内容为真实数据
+3. **危险操作二次确认**：删除、停机、提交、覆盖等不可逆操作，先弹确认（"确定要 X 吗？"），取消不执行
+4. **表单提交反馈**：提交后有成功/失败反馈（toast/内联提示），失败时明确错误；禁用按钮要显示原因
+5. **状态可见**：在线/离线、运行/暂停、加载中/完成——任何状态变化必须改变视觉（颜色、文案、指示灯），不能只改数据
+6. **空态与错误态**：列表为空、请求失败时给出提示文案 + 恢复路径，不要白屏
+7. **表单校验**：必填、格式（邮箱/数字）、越界（温度/电流阈值）在提交前拦截，错误信息贴近输入框
+
+> 原则：**每个交互都有开始→过程→结果**。无法模拟的后端（真实 API 不存在时）用本地假数据跑通全流程，并在交付说明里标注哪些是模拟的。
+
+### 生成规范 C：状态管理（单文件架构）
+
+- 用**一个 `state` 对象**承载所有运行时状态，DOM 更新只从 state 推导（写一个小 `render()` 或数据绑定）
+- 真实项目要避免**组件间直接改 DOM**；任何状态变化都走 state → 视图
+- 静态资源（图片、图标）不存在时用 CSS/SVG 占位，不要留死链
 
 ## 质量检查（两个流程都做）
 
@@ -112,6 +145,8 @@ OVERALL ≥ 0.6 通过（≥ 0.85 GOOD），否则退出码 1。用途：
 - [ ] 背景色、文字色、accent 与截图一致
 - [ ] 字阶（大小/字重/字体）与截图观感一致
 - [ ] 组件样式（圆角、阴影、hover）符合截图
+- [ ] 组件实现按**目标技术栈**换算过（圆角钳制、透明、字体替换），不是 CSS 字面值照搬
+- [ ] 交互清单过一遍：每个可点击元素点下去都有反应；弹窗能关；危险操作有确认；表单有反馈；状态变化可见
 - [ ] Do's/Don'ts 里没有"用脚趾头都能看出截图违背"的规则
 - [ ] preview.html 打开后像原站点（一眼扫过去气质一致）
 

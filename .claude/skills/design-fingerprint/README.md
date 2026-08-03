@@ -11,17 +11,23 @@
 - **Claude 本体**是视觉模型 —— 看截图判断 accent（品牌色）、氛围、组件状态，生成 UI。不需要 API key。
 - **DOM 脚本**（`scripts/extract.mjs`）读真实 computed styles，拿精确 token（色值、字号、间距、圆角、阴影）。统计聚类无法判断的（如"哪个颜色是品牌色"）会作为 `rawTokens` 候选暴露，由 Claude 看截图定夺。
 
+**跨技术栈：设计意图 > 字面值。**
+
+spec 里的数值是 CSS 语境下的，生成非 HTML 页面时按目标栈的钳制规则换算（如 WPF 的 CornerRadius 对 rx/ry 独立钳制，980px 会变成椭圆，pill 按钮应取圆角 = 高度一半）。视觉结果必须保持，实现手段随栈调整。
+
+**页面必须会"动"：** 生成的不只是静态样式，交互逻辑（页面切换、弹窗、二次确认、状态反馈、空/错误态、表单校验）与视觉同等重要，详见 [SKILL.md](SKILL.md) 的生成规范 B。
+
 ## 用法
 
 ```bash
 # 1. 提取（模仿）
-node .claude/skills/design-md/scripts/extract.mjs https://example.com --out output/example.com
+node .claude/skills/design-fingerprint/scripts/extract.mjs https://example.com --out output/example.com
 
 # 2. 渲染 DESIGN.md + preview.html
-node .claude/skills/design-md/scripts/preview.mjs output/example.com/spec.json --out output/example.com
+node .claude/skills/design-fingerprint/scripts/preview.mjs output/example.com/spec.json --out output/example.com
 
 # 3. 验证（调色板回归，可选）
-node .claude/skills/design-md/scripts/verify.mjs output/example.com/spec.json
+node .claude/skills/design-fingerprint/scripts/verify.mjs output/example.com/spec.json
 ```
 
 `extract.mjs` 输出 `spec.json` + 截图（page/mobile/dark.png）。**Claude 应 Read 截图**，修正 spec 中脚本无法判断的语义值（accent、atmosphere、Do's/Don'ts），再渲染。
@@ -35,7 +41,7 @@ node .claude/skills/design-md/scripts/verify.mjs output/example.com/spec.json
 ## 验证
 
 ```bash
-node .claude/skills/design-md/scripts/extract.mjs https://linear.app --out /tmp/t
+node .claude/skills/design-fingerprint/scripts/extract.mjs https://linear.app --out /tmp/t
 # 预期：accent (heuristic): #08090a（错误但记录了候选）
 # rawTokens.accentCandidates 会包含视觉候选，由 Claude 修正为 #e4f222
 ```

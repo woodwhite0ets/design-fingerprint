@@ -27,6 +27,7 @@
 git clone https://github.com/woodwhite0ets/design-fingerprint.git .claude/skills/design-fingerprint
 # 2. 装依赖（只需一次）
 cd .claude/skills/design-fingerprint && npm install
+# 3. （可选）装 dotnet SDK 可验证 C#/WPF 生成
 ```
 
 ## 用法
@@ -41,7 +42,6 @@ skill 的工作流（详见 [SKILL.md](.claude/skills/design-fingerprint/SKILL.m
 ```bash
 # 1. 提取：截图 + DOM token → spec.json + rawTokens 候选
 node scripts/extract.mjs https://example.com --out output/example.com
-
 # 2. Claude 看图做语义修正（accent、氛围、规则），更新 spec.json
 
 # 3. 渲染 DESIGN.md（9 区块）+ preview.html 视觉目录
@@ -79,7 +79,10 @@ node scripts/verify.mjs output/example.com/spec.json
 
 [在线预览](https://woodwhite0ets.github.io/design-fingerprint/) — 苹果设计指纹的视觉目录、暗色模式、生成的博客页面。
 
-`output/` 目录里有一个完整示例：从 [apple.com](https://www.apple.com) 提取设计指纹（白底、SF Pro、`#0071e3` 品牌蓝、pill 按钮、全平表面），并用它生成了一页原创博客（`blog-apple-style.html`）。
+`output/` 目录里有完整示例：
+
+- **网页**：从 [apple.com](https://www.apple.com) 提取设计指纹（白底、SF Pro、`#0071e3` 品牌蓝、pill 按钮、全平表面），并用它生成一页原创博客（`blog-apple-style.html`）
+- **桌面端（C#/WPF）**：同一份苹果设计指纹生成工控机 HMI 界面（`industrial-hmi-csharp/`）——苹果设计语言落地到 .NET 8 WPF：pill 按钮、平卡片、黑区块、实时曲线、报警弹层、紧急操作二次确认。含 `dotnet build` 编译验证
 
 ## 许可证
 

@@ -27,6 +27,7 @@ Getting an AI to truly imitate a design system when generating UI. The common ap
 git clone https://github.com/woodwhite0ets/design-fingerprint.git .claude/skills/design-fingerprint
 # 2. Install dependencies (once)
 cd .claude/skills/design-fingerprint && npm install
+# 3. (optional) dotnet SDK to verify C#/WPF generation
 ```
 
 ## Usage
@@ -79,7 +80,10 @@ The first version was fully automated extraction — until accent detection hit 
 
 [Live preview](https://woodwhite0ets.github.io/design-fingerprint/) — the Apple design fingerprint's visual catalog, dark-mode preview, and the generated blog page.
 
-`output/` contains a full example: a design fingerprint extracted from [apple.com](https://www.apple.com) (white background, SF Pro, `#0071e3` brand blue, pill buttons, flat surfaces), used to generate an original blog page (`blog-apple-style.html`).
+`output/` contains complete examples:
+
+- **Web**: a design fingerprint extracted from [apple.com](https://www.apple.com) (white background, SF Pro, `#0071e3` brand blue, pill buttons, flat surfaces), used to generate an original blog page (`blog-apple-style.html`)
+- **Desktop (C#/WPF)**: the same Apple fingerprint generated as an industrial HMI dashboard (`industrial-hmi-csharp/`) — Apple design language on .NET 8 WPF: pill buttons, flat cards, dark section, live chart, alarm dialog, confirm-before-act on emergency controls. Build-verified with `dotnet build`
 
 ## License
 
